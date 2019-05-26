@@ -1,17 +1,20 @@
 class Room
 
-  attr_reader :room_name, :guests, :playlist
+  attr_reader :room_name, :guests, :playlist, :guest_spending
 
-  def initialize(room_name)
+  def initialize(room_name, fee)
     @room_name = room_name
+    @fee = fee
     @guests = []
     @playlist = []
+    @guest_spending = 0
   end
 
   def check_in_guest(guest)
     if @guests.length < 5
       @guests << guest
-      guest.wallet -= 10
+      guest.wallet -= @fee
+      @guest_spending += @fee
     else
       return "Sorry, this room's full!"
     end
