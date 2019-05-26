@@ -27,6 +27,14 @@ class RoomTest < MiniTest::Test
     assert_equal("firstroom", @room1.room_name)
   end
 
+  def test_room_has_guests
+    assert_equal([], @room1.guests)
+  end
+
+  def test_room_has_playlist
+    assert_equal([], @room1.playlist)
+  end
+
   def test_check_in_guest
     @room1.check_in_guest(@Katherine)
     assert_equal([@Katherine], @room1.guests)
